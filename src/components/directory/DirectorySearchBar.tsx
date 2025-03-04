@@ -52,7 +52,7 @@ const DirectorySearchBarInternal = (props: DirectorySearchBarProps) => {
         <FilterSearch
           customCssClasses={{
             filterSearchContainer: "absolute w-full mb-0",
-            inputElement: "p-4 text-sm h-auto",
+            inputElement: "border-primary p-4 text-sm h-auto rounded-[16px]",
           }}
           label=""
           placeholder={placeholder}
@@ -74,7 +74,7 @@ const DirectorySearchBarInternal = (props: DirectorySearchBarProps) => {
         />
       </div>
       <GeolocateButton
-        className="ml-4"
+        className="location-button ml-4"
         redirectToSearchPage={true}
         searcherPath={searcherPath}
       />

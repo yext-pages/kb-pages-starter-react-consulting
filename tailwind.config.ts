@@ -8,9 +8,14 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: { max: "300px" },
+      },
       fontFamily: {
         primary: "'Arial','Helvetica','sans-serif','system'",
         secondary: "'Arial','Helvetica','sans-serif','system'",
+        gotham: ["Gotham", "sans-serif"],
+        oldStandard: ["Old Standard", "sans-serif"],
       },
       fontSize: {
         sm: ["14px", "22px"],
@@ -18,8 +23,8 @@ export default {
         lg: ["18px", "24px"],
       },
       colors: {
-        "brand-primary": "#0F70F0",
-        "brand-secondary": "#0C5ECB",
+        "brand-primary": "#095587",
+        "brand-secondary": "#f4d34c",
         "brand-gray": {
           100: "#F7F7F7",
           200: "#EDEDED",

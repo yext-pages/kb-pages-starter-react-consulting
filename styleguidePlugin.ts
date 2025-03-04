@@ -43,16 +43,20 @@ export default plugin(({ addComponents, theme }) => {
       },
     },
     ".heading-head": {
-      fontSize: "1.5rem",
-      lineHeight: "1.33",
-      "@screen sm": {
-        fontSize: "2.125rem",
-        lineHeight: "1.18",
+      fontFamily: theme("fontFamily.oldStandard"),
+      color: theme("colors.brand-primary"),
+      fontSize: "67px",
+      lineHeight: "70px",
+      "@screen xs": {
+        fontSize: "50px",
+        lineHeight: "56px",
       },
     },
     ".heading-sub": {
-      fontSize: "1.25rem",
-      lineHeight: "1.4",
+      fontFamily: theme("fontFamily.gotham"),
+      color: theme("colors.brand-primary"),
+      fontSize: "14px",
+      lineHeight: "22px",
       "@screen sm": {
         fontSize: "1.5rem",
         lineHeight: "1.25",
@@ -73,12 +77,36 @@ export default plugin(({ addComponents, theme }) => {
     ".link-breadcrumbs": {
       color: theme("colors.brand-primary"),
       fontWeight: theme("fontWeight.bold"),
+      fontFamily: theme("fontFamily.gotham"),
     },
     ".link-underline": {
       textDecoration: "underline",
       "&:hover": {
         textDecoration: "none",
       },
+    },
+    ".link-header": {
+      fontFamily: theme("fontFamily.oldStandard"),
+      color: theme("colors.brand-primary"),
+      fontSize: "42px",
+    },
+    ".link-footer": {
+      fontFamily: theme("fontFamily.oldStandard"),
+      color: theme("colors.brand-primary"),
+      fontSize: "29px",
+    },
+    ".border-primary": {
+      borderColor: theme("colors.brand-primary"),
+    },
+    ".location-path": {
+      fontFamily: theme("fontFamily.gotham"),
+      fontSize: "14px",
+      color: theme("colors.brand-primary"),
+    },
+    ".location-button": {
+      backgroundColor: theme("colors.brand-secondary"),
+      padding: "14px",
+      borderRadius: "16px",
     },
   });
 });

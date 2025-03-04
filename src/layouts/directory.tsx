@@ -22,15 +22,17 @@ type DirectoryLayoutProps = DirectoryListLayoutProps | DirectoryGridLayoutProps;
 const DirectoryLayout = ({ data }: DirectoryLayoutProps) => {
   const { dm_directoryParents_defaultdirectory, dm_directoryChildren } =
     data.document;
-
+  if (dm_directoryParents_defaultdirectory) {
+    dm_directoryParents_defaultdirectory[0].name = "All Restaurants";
+  }
   return (
     <>
-      <DirectoryHero />
       <Breadcrumbs
         breadcrumbs={dm_directoryParents_defaultdirectory || []}
         separator="/"
-        className="container flex justify-center"
+        className="location-path container flex justify-center"
       />
+      <DirectoryHero />
       {dm_directoryChildren && isDirectoryGrid(dm_directoryChildren) && (
         <DirectoryGrid CardComponent={DirectoryCard} />
       )}

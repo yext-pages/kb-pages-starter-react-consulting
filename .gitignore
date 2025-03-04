@@ -11,3 +11,4 @@ functions/functionMetadata.json
 pnpm-lock.yaml
 yarn.lock
 deno.lock
+.yextrc

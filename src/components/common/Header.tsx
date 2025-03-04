@@ -1,10 +1,11 @@
-import { Image, Link, type CTA, type ImageType } from "@yext/pages-components";
+import { Link, type CTA, type ImageType, Image } from "@yext/pages-components";
 import c from "classnames";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { MaybeLink } from "src/components/common/MaybeLink";
 import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
 import { useTemplateData } from "src/common/useTemplateData";
+import { generateLinkLabels } from "src/common/helper";
 
 const Header = () => {
   const templateData = useTemplateData();
@@ -68,8 +69,8 @@ const HeaderLinks = (props: { links: CTA[] }) => {
         {props.links.map((item: CTA, idx) => (
           <li key={item.link}>
             <Link
-              className="link-primary mx-2 lg:mx-5"
-              cta={item}
+              className="link-primary link-header mx-2 lg:mx-5"
+              cta={{ ...item, label: generateLinkLabels(idx) }}
               eventName={`link${idx}`}
             />
           </li>
@@ -93,7 +94,7 @@ const HeaderMobileMenu = (props: { isOpen?: boolean; links: CTA[] }) => {
             <li key={item.link}>
               <Link
                 className="link-primary py-3 block"
-                cta={item}
+                cta={{ ...item, label: generateLinkLabels(idx) }}
                 eventName={`mobilelink${idx}`}
               />
             </li>

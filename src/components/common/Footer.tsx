@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
 import { useTemplateData } from "src/common/useTemplateData";
+import { generateLinkLabels } from "src/common/helper";
 
 const Footer = () => {
   const templateData = useTemplateData();
@@ -78,9 +79,9 @@ const FooterLayout = (props: FooterLayoutProps) => {
           <div className="flex flex-col sm:flex-row items-center">
             {footerLinks.map((link, i) => (
               <Link
-                className="link-primary mb-4 sm:mb-0 sm:mr-4"
+                className="link-primary link-footer mb-4 sm:mb-0 sm:mr-4"
                 key={i}
-                cta={link}
+                cta={{ ...link, label: generateLinkLabels(i) }}
                 eventName={`link${i}`}
               />
             ))}

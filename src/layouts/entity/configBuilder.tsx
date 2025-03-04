@@ -26,7 +26,6 @@ export const configBuilder: (
       "description",
       "hours",
       "timezone",
-      "googlePlaceId",
       "photoGallery",
       "ref_listings.listingUrl",
       "ref_listings.publisher",
@@ -44,7 +43,6 @@ export const configBuilder: (
       // Core Fields
       "address",
       "mainPhone",
-      "googlePlaceId",
       "tollFreePhone",
       "emails",
       "hours",
@@ -82,24 +80,24 @@ export const configBuilder: (
       // Nearby Fields
       "c_nearbySection",
       // Product Fields
-      // "c_featuredProductsSection.title",
-      // "c_featuredProductsSection.products.name",
-      // "c_featuredProductsSection.products.richTextDescriptionV2",
-      // "c_featuredProductsSection.products.primaryPhoto",
-      // "c_featuredProductsSection.products.c_primaryCTA",
+      "c_featuredProductsSection.title",
+      "c_featuredProductsSection.products.name",
+      "c_featuredProductsSection.products.richTextDescriptionV2",
+      "c_featuredProductsSection.products.primaryPhoto",
+      "c_featuredProductsSection.products.c_primaryCTA",
       // Promo Fields
       "c_promoSection",
       // Review Fields
       "c_reviewsSection",
       // Team Fields
-      // "c_teamSection.title",
-      // "c_teamSection.team.id",
-      // "c_teamSection.team.name",
-      // "c_teamSection.team.headshot",
-      // "c_teamSection.team.mainPhone",
-      // "c_teamSection.team.c_occupation",
-      // "c_teamSection.team.emails",
-      // "c_teamSection.team.websiteUrl",
+      "c_teamSection.title",
+      "c_teamSection.team.id",
+      "c_teamSection.team.name",
+      "c_teamSection.team.headshot",
+      "c_teamSection.team.mainPhone",
+      "c_teamSection.team.c_occupation",
+      "c_teamSection.team.emails",
+      "c_teamSection.team.websiteUrl",
     ]),
     // Defines the scope of entities that qualify for this stream.
     filter: filter || {

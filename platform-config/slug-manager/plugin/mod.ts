@@ -4,7 +4,7 @@ declare const API_KEY: string;
 
 export const { webhook, connector } = createSlugManager({
   apiKey: API_KEY,
-  slugFormat: (lang, profile) => {
+  slugFormat: (lang) => {
     if (lang === "en") {
       return "[[address.region]]/[[address.city]]/[[address.line1]]";
     }
@@ -12,6 +12,7 @@ export const { webhook, connector } = createSlugManager({
   },
   fields: [],
   entityTypes: ["location"],
+  env: "sandbox",
   // Uncomment if you want to scope the slug manager to a specific filter
   // The ids here must be the internal search ids, visible as the `selectedSavedFilterId`
   // query parameter when viewing the filter on the entity list page, NOT the filter
