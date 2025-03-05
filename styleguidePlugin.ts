@@ -3,12 +3,15 @@ import plugin from "tailwindcss/plugin";
 export default plugin(({ addComponents, theme }) => {
   addComponents({
     ".button": {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      borderRadius: "50px",
-      padding: `${theme("spacing.2")} ${theme("spacing.6")}`,
-      fontWeight: theme("fontWeight.bold"),
+      borderRadius: "16px",
+      fontSize: "40px",
+      lineHeight: "40px",
+      paddingTop: "6px",
+      height: "64px",
+      textAlign: "center",
+      whiteSpace: "nowrap",
+      fontWeight: "400",
+      fontFamily: theme("fontFamily.oldStandard"),
     },
     ".button-primary": {
       backgroundColor: theme("colors.brand-primary"),
@@ -21,9 +24,9 @@ export default plugin(({ addComponents, theme }) => {
       },
     },
     ".button-secondary": {
-      backgroundColor: "white",
-      color: theme("colors.brand-secondary"),
-      border: `2px solid ${theme("colors.brand-primary")}`,
+      backgroundColor: theme("colors.brand-secondary"),
+      color: theme("colors.brand-primary"),
+      border: `2px solid ${theme("colors.brand-secondary")}`,
       "&:hover": {
         backgroundColor: theme("colors.brand-secondary"),
         color: "white",
@@ -55,11 +58,11 @@ export default plugin(({ addComponents, theme }) => {
     ".heading-sub": {
       fontFamily: theme("fontFamily.gotham"),
       color: theme("colors.brand-primary"),
-      fontSize: "14px",
-      lineHeight: "22px",
-      "@screen sm": {
-        fontSize: "1.5rem",
-        lineHeight: "1.25",
+      fontSize: "35px",
+      lineHeight: "52px",
+      "@screen xs": {
+        fontSize: "29px",
+        lineHeight: "43px",
       },
     },
     ".link-primary": {
@@ -98,15 +101,19 @@ export default plugin(({ addComponents, theme }) => {
     ".border-primary": {
       borderColor: theme("colors.brand-primary"),
     },
-    ".location-path": {
-      fontFamily: theme("fontFamily.gotham"),
-      fontSize: "14px",
-      color: theme("colors.brand-primary"),
+    ".promo-image": {
+      "@media(min-width: 600px)": {
+        height: "168px",
+      },
+      "@media(min-width: 900px)": {
+        height: "268px",
+      },
     },
-    ".location-button": {
-      backgroundColor: theme("colors.brand-secondary"),
-      padding: "14px",
-      borderRadius: "16px",
+    ".promo-item": {
+      width: "100%",
+      "@media(min-width: 600px)": {
+        width: "45%",
+      },
     },
   });
 });
