@@ -6,9 +6,12 @@ export default plugin(({ addComponents, theme }) => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      borderRadius: "50px",
-      padding: `${theme("spacing.2")} ${theme("spacing.6")}`,
+      borderRadius: "16px",
+      padding: "0.5rem 0.5rem",
       fontWeight: theme("fontWeight.bold"),
+      fontSize: "30px",
+      whiteSpace: "nowrap",
+      fontFamily: theme("fontFamily.oldStandard"),
     },
     ".button-primary": {
       backgroundColor: theme("colors.brand-primary"),
@@ -21,9 +24,9 @@ export default plugin(({ addComponents, theme }) => {
       },
     },
     ".button-secondary": {
-      backgroundColor: "white",
-      color: theme("colors.brand-secondary"),
-      border: `2px solid ${theme("colors.brand-primary")}`,
+      backgroundColor: theme("colors.brand-secondary"),
+      color: theme("colors.brand-primary"),
+      border: `2px solid ${theme("colors.brand-secondary")}`,
       "&:hover": {
         backgroundColor: theme("colors.brand-secondary"),
         color: "white",
@@ -57,7 +60,7 @@ export default plugin(({ addComponents, theme }) => {
       color: theme("colors.brand-primary"),
       fontSize: "14px",
       lineHeight: "22px",
-      "@screen sm": {
+      "@screen xs": {
         fontSize: "1.5rem",
         lineHeight: "1.25",
       },
@@ -107,6 +110,87 @@ export default plugin(({ addComponents, theme }) => {
       backgroundColor: theme("colors.brand-secondary"),
       padding: "14px",
       borderRadius: "16px",
+    },
+    ".divider": {
+      backgroundImage: "url('src/assets/images/divider.png')",
+    },
+    ".HoursStatus": {
+      color: theme("colors.brand-primary"),
+      fontWeight: "400",
+      fontSize: "24px",
+      "@screen xs": {
+        fontSize: "18px",
+      },
+    },
+    ".bordered-box-h": {
+      position: "relative",
+      padding: "34px",
+      background: "white",
+      "&::before, &::after, & div::before, & div::after": {
+        content: "''",
+        position: "absolute",
+        backgroundSize: "cover",
+        backgroundRepeat: "repeat",
+      },
+      "&::before, &::after": {
+        height: "18px",
+        width: "100%",
+        left: "0",
+      },
+      "&::before": {
+        top: "0",
+        backgroundImage: "url(/src/assets/images/border-h.png)",
+      },
+      "&::after": {
+        bottom: "0",
+        backgroundImage: "url(/src/assets/images/border-h.png)",
+      },
+    },
+    ".bordered-box-v": {
+      justifyItems: "center",
+      "&::before, &::after": {
+        width: "18px",
+        height: "100%",
+        top: "0",
+        backgroundImage: "url('/src/assets/images/border-v.png')",
+      },
+      "&::before": {
+        left: "0",
+        backgroundImage: "url('/src/assets/images/border-v.png')",
+      },
+      "&::after": {
+        right: "0",
+        backgroundImage: "url('/src/assets/images/border-v.png')",
+      },
+    },
+    ".map": {
+      display: "none",
+      padding: "18px",
+      "@screen lg": {
+        display: "block",
+      },
+    },
+    ".shop": {
+      padding: "18px",
+      "@screen md": {
+        height: "250px",
+      },
+      "@screen lg": {
+        height: "356px",
+      },
+    },
+    ".phone": {
+      "@screen xs": {
+        textDecoration: "underline",
+      },
+    },
+    ".section": {
+      "@media(min-width: 640px) and (max-width: 767px)": {
+        gap: "16px",
+      },
+    },
+    ".direction": {
+      textDecoration: "underline",
     },
   });
 });

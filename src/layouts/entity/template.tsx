@@ -43,7 +43,7 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
       <Breadcrumbs
         breadcrumbs={directoryParents || []}
         separator="/"
-        className="container"
+        className="container location-path justify-items-center"
       />
       <Hero />
       <Core />
