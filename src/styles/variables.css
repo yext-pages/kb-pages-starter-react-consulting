@@ -3,4 +3,7 @@
   provided by imported components.
 */
 html {
+  abbr[title="United States"] {
+    display: none;
+  }
 }

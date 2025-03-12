@@ -115,5 +115,86 @@ export default plugin(({ addComponents, theme }) => {
         width: "45%",
       },
     },
+    ".divider": {
+      backgroundImage: "url('src/assets/images/divider.png')",
+    },
+    ".HoursStatus": {
+      color: theme("colors.brand-primary"),
+      fontWeight: "400",
+      fontSize: "24px",
+      "@screen xs": {
+        fontSize: "18px",
+      },
+    },
+    ".bordered-box-h": {
+      position: "relative",
+      padding: "34px",
+      background: "white",
+      "&::before, &::after, & div::before, & div::after": {
+        content: "''",
+        position: "absolute",
+        backgroundSize: "cover",
+        backgroundRepeat: "repeat",
+      },
+      "&::before, &::after": {
+        height: "18px",
+        width: "100%",
+        left: "0",
+      },
+      "&::before": {
+        top: "0",
+        backgroundImage: "url(/src/assets/images/border-h.png)",
+      },
+      "&::after": {
+        bottom: "0",
+        backgroundImage: "url(/src/assets/images/border-h.png)",
+      },
+    },
+    ".bordered-box-v": {
+      justifyItems: "center",
+      "&::before, &::after": {
+        width: "18px",
+        height: "100%",
+        top: "0",
+        backgroundImage: "url('/src/assets/images/border-v.png')",
+      },
+      "&::before": {
+        left: "0",
+        backgroundImage: "url('/src/assets/images/border-v.png')",
+      },
+      "&::after": {
+        right: "0",
+        backgroundImage: "url('/src/assets/images/border-v.png')",
+      },
+    },
+    ".map": {
+      display: "none",
+      padding: "18px",
+      "@screen lg": {
+        display: "block",
+      },
+    },
+    ".shop": {
+      padding: "18px",
+      "@screen md": {
+        height: "250px",
+      },
+      "@screen lg": {
+        height: "356px",
+      },
+    },
+    ".phone": {
+      "@screen xs": {
+        textDecoration: "underline",
+      },
+    },
+    ".section": {
+      "@media(min-width: 640px) and (max-width: 767px)": {
+        gap: "16px",
+      },
+    },
+    ".direction": {
+      textDecoration: "underline",
+    },
   });
 });
