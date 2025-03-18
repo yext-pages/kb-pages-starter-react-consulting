@@ -46,14 +46,22 @@ type HeroLayoutProps = {
 };
 
 const HeroLayout = (props: HeroLayoutProps) => {
+  const cta3: CTA = {
+    link: "#",
+    label: "Order with Postmates",
+  };
   return (
     <div className="Hero py-8 sm:py-16">
-      <div className="container flex flex-col lg:flex-row">
-        <div className="w-full lg:w-1/2 lg:mt-8 mb-6 lg:mb-0 lg:mr-8">
-          <h1 className="heading heading-sub mb-4 sm:mb-0">{props.name}</h1>
-          <div className="heading heading-lead mb-4">{props.address.line1}</div>
+      <div className="container flex flex-col lg:flex-row justify-center">
+        <div className="w-full text-center justify-items-center lg:mt-8 mb-6 lg:mb-0 lg:mr-8">
+          <h1 className="font-primary uppercase heading-head mb-4 sm:mb-0">
+            {props.name}
+          </h1>
+          <div className="heading-head mt-4 mb-4">{props.address.line1}</div>
+          <div className="divider w-40 h-3 mb-4"></div>
           {props.hours && props.timezone && (
-            <div className="mb-4 h-6">
+            <div className="mb-4 h-6 flex font-legendSerif">
+              <div className="online"></div>
               <HoursStatus
                 hours={props.hours}
                 timezone={props.timezone}
@@ -63,20 +71,16 @@ const HeroLayout = (props: HeroLayoutProps) => {
               />
             </div>
           )}
-          {/* TODO(aganesh) : use Reviews component when available */}
-          {props.rating && (
-            <div className="mb-6 lg:mb-8">
-              <span> {props.rating} out of 5 </span>
-              <span>({props.numReviews} reviews)</span>
-            </div>
-          )}
           {(props.cta1 || props.cta2) && (
-            <div className="flex flex-col lg:flex-row mb-4 gap-4">
+            <div className="flex flex-col w-full md:flex-row mb-4 gap-4 justify-center mt-8">
               {props.cta1 && (
                 <Link className="button button-primary" cta={props.cta1} />
               )}
               {props.cta2 && (
                 <Link className="button button-secondary" cta={props.cta2} />
+              )}
+              {props.cta2 && (
+                <Link className="button button-secondary" cta={cta3} />
               )}
             </div>
           )}

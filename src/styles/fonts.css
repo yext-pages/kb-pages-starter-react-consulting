@@ -30,3 +30,11 @@ For example:
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Legend Sans Serif";
+  src: url("/src/assets/fonts/LegendSansSerif-Regular.ttf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

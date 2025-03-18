@@ -14,6 +14,7 @@ import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
 import { getMapKey } from "src/common/getMapKey";
 import { useTemplateData } from "src/common/useTemplateData";
 import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
+import ShopImage from "src/assets/images/shop.jpg";
 
 const Core = () => {
   const templateData = useTemplateData();
@@ -30,18 +31,37 @@ type CoreLayoutProps = {
   profile: LocationProfile;
 };
 
-const CoreSection = (props: { children: ReactNode }) => {
-  return <div className="w-full sm:w-1/2 lg:w-1/3 mb-8">{props.children}</div>;
+const CoreSection = (props: { children: ReactNode; className?: string }) => {
+  return (
+    <div
+      className={`justify-center min-w-min bordered-box-h w-full md:w-[45%] lg:w-[25%] xl:w-[30%] mb-2 ${props.className}`}
+    >
+      {props.children}
+    </div>
+  );
 };
 
 const CoreHeading = (props: { children: ReactNode }) => {
-  return <h2 className="heading heading-sub mb-4">{props.children}</h2>;
+  return (
+    <h2 className="justify-items-center font-legendSerif text-[24px] xl:text-[35px] mb-4">
+      {props.children}
+    </h2>
+  );
 };
 
 const CoreLayout = (props: CoreLayoutProps) => {
   const mapKey = getMapKey();
   const isDesktopBreakpoint = useBreakpoint("sm");
   const { profile } = props;
+  const dayNames = {
+    monday: "Mon",
+    tuesday: "Tues",
+    wednesday: "Wed",
+    thursday: "Thur",
+    friday: "Fri",
+    saturday: "Sat",
+    sunday: "Sun",
+  };
   const mappinSVG = (
     <svg
       width="56"
@@ -63,97 +83,132 @@ const CoreLayout = (props: CoreLayoutProps) => {
     </svg>
   );
 
+  const directionUrl = getDirections(
+    profile.address,
+    profile.ref_listings,
+    profile.googlePlaceId
+  );
+
+  const defaultNumber = "(515) 282-6666";
+
   return (
-    <div className="py-8 sm:py-16 bg-brand-gray-100">
+    <div className="py-8 sm:py-16 bg-brand-gray-100 text-brand-primary">
       <div className="container">
-        <div className="flex flex-row flex-wrap">
-          <CoreSection>
-            <CoreHeading>Information</CoreHeading>
-            <Address address={profile.address} />
-            <Link
-              className="link-primary link-underline font-bold mt-2"
-              href={`${getDirections(
-                profile.address,
-                profile.ref_listings,
-                profile.googlePlaceId
-              )}`}
-              eventName="getdirections"
-            >
-              Get Directions
-            </Link>
-            {profile.t_mainPhone && (
-              <div className="flex items-center mt-4">
-                <FaPhone className="text-blue-500 mr-2" />
-                <span className="mr-2 font-bold">Phone</span>
+        <div className="section gap-8 justify-around flex flex-row flex-wrap w-full">
+          <CoreSection className="text-center">
+            <div className="bordered-box bordered-box-v">
+              <CoreHeading>Information</CoreHeading>
+              <div className="mb-4 mt-6 phone">
                 <Link
-                  href={profile.t_mainPhone.href}
-                  className="link-underline"
+                  href={profile.t_mainPhone ? profile.t_mainPhone.href : "#"}
                 >
-                  {profile.t_mainPhone.label}
+                  {profile.t_mainPhone
+                    ? profile.t_mainPhone.label
+                    : defaultNumber}
                 </Link>
               </div>
-            )}
-            {profile.t_tollFreePhone && (
-              <div className="flex items-center mt-4">
-                <FaPhone className="text-blue-500 mr-2" />
-                <span className="mr-2 font-bold">Toll-free</span>
+              <Address address={profile.address} />
+              <div className="mt-3">
                 <Link
-                  href={profile.t_tollFreePhone.href}
-                  className="link-underline"
+                  className="direction mt-2"
+                  href={`${directionUrl}`}
+                  eventName="getdirections"
                 >
-                  {profile.t_tollFreePhone.label}
+                  Get Directions
                 </Link>
               </div>
-            )}
-            {profile.emails && (
-              <div className="flex items-center mt-4">
-                <FaEnvelope className="text-blue-500 mr-2" />
-                <Link
-                  className="link-primary link-underline font-bold"
-                  cta={{ link: profile.emails[0], linkType: "Email" }}
-                  eventName="email"
-                >
-                  {profile.emails[0]}
-                </Link>
-              </div>
-            )}
+              {profile.t_tollFreePhone && (
+                <div className="flex items-center mt-4">
+                  <FaPhone className="text-blue-500 mr-2" />
+                  <span className="mr-2 font-bold">Toll-free</span>
+                  {profile.t_tollFreePhone.label && (
+                    <Link
+                      href={profile.t_tollFreePhone.href}
+                      className="link-underline"
+                    >
+                      {profile.t_tollFreePhone.label}
+                    </Link>
+                  )}
+                </div>
+              )}
+              {profile.emails && profile.emails.length > 0 && (
+                <div className="flex items-center mt-4">
+                  <FaEnvelope className="text-blue-500 mr-2" />
+                  <Link
+                    className="link-primary link-underline font-bold"
+                    cta={{ link: profile.emails[0], linkType: "Email" }}
+                    eventName="email"
+                  >
+                    {profile.emails[0]}
+                  </Link>
+                </div>
+              )}
+            </div>
           </CoreSection>
           {(profile.hours || profile.additionalHoursText) && (
             <CoreSection>
-              <CoreHeading>Hours</CoreHeading>
-              {profile.hours && (
-                <HoursTable hours={profile.hours} startOfWeek="monday" />
-              )}
-              {profile.additionalHoursText && (
-                <div className="mt-4">{profile.additionalHoursText}</div>
-              )}
+              <div className="bordered-box-v">
+                <CoreHeading>Hours</CoreHeading>
+                {profile.hours && (
+                  <HoursTable
+                    hours={profile.hours}
+                    startOfWeek="monday"
+                    dayOfWeekNames={dayNames}
+                  />
+                )}
+                {profile.additionalHoursText && (
+                  <div className="mt-4">{profile.additionalHoursText}</div>
+                )}
+                <div className="mt-2 mb-6">Closed on Christmas Day</div>
+              </div>
             </CoreSection>
           )}
-          {profile.services && (
+          {(profile.hours || profile.additionalHoursText) && (
             <CoreSection>
-              <CoreHeading>Services</CoreHeading>
-              <ul className="list-inside">
-                {profile.services.map((service) => (
-                  <li className="mb-2" key={service}>
-                    {service}
-                  </li>
-                ))}
-              </ul>
+              <div className="bordered-box-v">
+                <CoreHeading>Drive-Thru Hours</CoreHeading>
+                {profile.hours && (
+                  <HoursTable
+                    hours={profile.hours}
+                    startOfWeek="monday"
+                    dayOfWeekNames={dayNames}
+                  />
+                )}
+                {profile.additionalHoursText && (
+                  <div className="mt-4">{profile.additionalHoursText}</div>
+                )}
+                <div className="mt-2 mb-6">Closed on Christmas Day</div>
+              </div>
             </CoreSection>
           )}
         </div>
-        {isDesktopBreakpoint && profile.yextDisplayCoordinate && (
-          <LazyLoadWrapper>
-            <LocationMap
-              className="h-[300px] mt-6"
-              coordinate={profile.yextDisplayCoordinate}
-              provider={GoogleMaps}
-              {...mapKey}
-            >
-              {mappinSVG}
-            </LocationMap>
-          </LazyLoadWrapper>
-        )}
+        <div className="section gap-8 justify-center flex flex-row flex-wrap w-full mt-8">
+          <div className="justify-center min-w-min map bordered-box-h lg:w-[48%] mb-2">
+            <div className="h-[100%] w-[100%] bordered-box-v">
+              {isDesktopBreakpoint && profile.yextDisplayCoordinate && (
+                <LazyLoadWrapper>
+                  <LocationMap
+                    className="w-full h-full"
+                    coordinate={profile.yextDisplayCoordinate}
+                    provider={GoogleMaps}
+                    {...mapKey}
+                  >
+                    {mappinSVG}
+                  </LocationMap>
+                </LazyLoadWrapper>
+              )}
+            </div>
+          </div>
+          <div className="justify-center min-w-min shop bordered-box-h md:w-[47%] lg:w-[48%] mb-2">
+            <div className="h-[100%] w-[100%] bordered-box-v">
+              <img
+                src={ShopImage}
+                alt="shop-img"
+                className="w-full h-full"
+              ></img>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

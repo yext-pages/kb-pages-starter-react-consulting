@@ -9,13 +9,14 @@ export default {
   theme: {
     extend: {
       screens: {
-        xs: { max: "300px" },
+        xs: { max: "425px" },
       },
       fontFamily: {
         primary: "'Arial','Helvetica','sans-serif','system'",
         secondary: "'Arial','Helvetica','sans-serif','system'",
         gotham: ["Gotham", "sans-serif"],
         oldStandard: ["Old Standard", "sans-serif"],
+        legendSerif: ["Legend Sans Serif", "sans-serif"],
       },
       fontSize: {
         sm: ["14px", "22px"],
@@ -37,8 +38,8 @@ export default {
         padding: {
           DEFAULT: "1rem",
           sm: "2rem",
-          lg: "4rem",
-          xl: "5rem",
+          lg: "2rem",
+          xl: "3rem",
         },
       },
       boxShadow: {

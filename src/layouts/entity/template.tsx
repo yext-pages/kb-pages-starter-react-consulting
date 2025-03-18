@@ -12,7 +12,6 @@ import type { LocationProfile, TemplateRenderProps } from "src/types/entities";
 
 import Breadcrumbs from "src/components/common/Breadcrumbs";
 import About from "src/components/entity/About";
-import Banner from "src/components/entity/Banner";
 import Core from "src/components/entity/Core";
 import Events from "src/components/entity/Events";
 import FAQs from "src/components/entity/FAQs";
@@ -39,11 +38,10 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
 
   return (
     <>
-      <Banner hasCloseBtn={true} />
       <Breadcrumbs
         breadcrumbs={directoryParents || []}
         separator="/"
-        className="container"
+        className="container location-path justify-items-center"
       />
       <Hero />
       <Core />

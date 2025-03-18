@@ -3,4 +3,8 @@
   provided by imported components.
 */
 html {
+  abbr[title="United States"] {
+    display: none;
+  }
+  --yxt-hoursTable-col1-width: 100px;
 }
