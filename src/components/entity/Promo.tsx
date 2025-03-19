@@ -1,6 +1,4 @@
 import { Link, Image, type ImageType, type CTA } from "@yext/pages-components";
-import appStoreIcon from "src/assets/images/appstore.svg";
-import playStoreIcon from "src/assets/images/playstore.svg";
 import { useTemplateData } from "src/common/useTemplateData";
 import { LocationProfile } from "src/types/entities";
 import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
@@ -39,40 +37,34 @@ type PromoLayoutProps = {
 
 const PromoLayout = (props: PromoLayoutProps) => {
   return (
-    <div className="py-8 sm:py-16">
-      <div className="container flex flex-col md:flex-row">
-        {props.image && (
-          <div className="w-full md:w-1/2">
-            <Image image={props.image} />
-          </div>
-        )}
-
-        <div className="w-full md:w-1/2 flex flex-col gap-8 mt-8 md:ml-16">
-          <h2 className="heading heading-head">{props.title}</h2>
-
-          {props.description && <div>{props.description}</div>}
-
-          {props.cta && (
-            <Link
-              className="button button-primary inline-flex self-start"
-              cta={props.cta}
-            />
-          )}
-
-          {(props.appStoreUrl || props.googlePlayUrl) && (
-            <div className="flex gap-4">
-              {props.appStoreUrl && (
-                <Link href={props.appStoreUrl} eventName="applestore">
-                  <img src={appStoreIcon} alt="Download on the App Store" />
-                </Link>
-              )}
-              {props.googlePlayUrl && (
-                <Link href={props.googlePlayUrl} eventName="googleplaystore">
-                  <img src={playStoreIcon} alt="Download on the Play Store" />
-                </Link>
+    <div className="bg-brand-primary justify-items-center text-white py-8 sm:py-16">
+      <div className="container">
+        <h1 className="heading-head text-white mb-4 text-center">Promotions</h1>
+        <div className="justify-around flex flex-wrap lg:gap-2">
+          <div className="promo-item md:w-[45%] lg:w-[32%] xl:w-[31%] flex flex-col gap-8 mt-8">
+            <div>
+              {props.image && (
+                <Image
+                  image={props.image}
+                  className="rounded-[5px] promo-image"
+                ></Image>
               )}
             </div>
-          )}
+            <div className="text-white text-[28px] lg:text-[35px] font-legendSerif">
+              {props.title}
+            </div>
+
+            {props.description && <div>{props.description}</div>}
+
+            {props.cta && (
+              <Link
+                className="button button-secondary w-full self-start"
+                cta={props.cta}
+              >
+                Learn More
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -7,13 +7,13 @@ export default plugin(({ addComponents, theme }) => {
       justifyContent: "center",
       alignItems: "center",
       borderRadius: "16px",
-      padding: "0.5rem 0.5rem",
+      padding: "0 0.5rem 0.5rem 0.5rem",
       fontWeight: theme("fontWeight.bold"),
       fontSize: "30px",
       whiteSpace: "nowrap",
       fontFamily: theme("fontFamily.oldStandard"),
       "@screen lg": {
-        padding: "0.5rem 1rem",
+        padding: "0 1rem 0.5rem",
       },
     },
     ".button-primary": {
@@ -104,15 +104,22 @@ export default plugin(({ addComponents, theme }) => {
     ".border-primary": {
       borderColor: theme("colors.brand-primary"),
     },
-    ".location-path": {
-      fontFamily: theme("fontFamily.gotham"),
-      fontSize: "14px",
-      color: theme("colors.brand-primary"),
+    ".promo-image": {
+      "@media(min-width: 600px)": {
+        height: "168px",
+      },
+      "@media(min-width: 900px)": {
+        height: "268px",
+      },
+      "@media(min-width: 1024px)": {
+        height: "200px",
+      },
     },
-    ".location-button": {
-      backgroundColor: theme("colors.brand-secondary"),
-      padding: "14px",
-      borderRadius: "16px",
+    ".promo-item": {
+      width: "100%",
+      "@media(min-width: 600px)": {
+        width: "45%",
+      },
     },
     ".divider": {
       backgroundImage: "url('src/assets/images/divider.png')",
@@ -175,9 +182,6 @@ export default plugin(({ addComponents, theme }) => {
     },
     ".shop": {
       padding: "18px",
-      "@screen md": {
-        height: "250px",
-      },
       "@screen lg": {
         height: "290px",
       },

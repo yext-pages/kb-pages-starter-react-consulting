@@ -34,7 +34,7 @@ type CoreLayoutProps = {
 const CoreSection = (props: { children: ReactNode; className?: string }) => {
   return (
     <div
-      className={`justify-center min-w-min bordered-box-h w-full md:w-[45%] lg:w-[25%] xl:w-[30%] mb-2 ${props.className}`}
+      className={`justify-center min-w-min bordered-box-h w-full md:w-[47%] lg:w-[32.5%] xl:w-[30%] mb-2 ${props.className}`}
     >
       {props.children}
     </div>
@@ -94,7 +94,7 @@ const CoreLayout = (props: CoreLayoutProps) => {
   return (
     <div className="py-8 sm:py-16 bg-brand-gray-100 text-brand-primary">
       <div className="container">
-        <div className="section gap-8 justify-around flex flex-row flex-wrap w-full">
+        <div className="section md:gap-8 lg:gap-2 justify-around flex flex-row flex-wrap w-full">
           <CoreSection className="text-center">
             <div className="bordered-box bordered-box-v">
               <CoreHeading>Information</CoreHeading>
@@ -199,7 +199,7 @@ const CoreLayout = (props: CoreLayoutProps) => {
               )}
             </div>
           </div>
-          <div className="justify-center min-w-min shop bordered-box-h md:w-[47%] lg:w-[48%] mb-2">
+          <div className="justify-center min-w-min shop bordered-box-h md:w-full lg:w-[48%] mb-2">
             <div className="h-[100%] w-[100%] bordered-box-v">
               <img
                 src={ShopImage}
