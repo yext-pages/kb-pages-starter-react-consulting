@@ -11,7 +11,7 @@ export default plugin(({ addComponents, theme }) => {
       fontWeight: theme("fontWeight.bold"),
       fontSize: "30px",
       whiteSpace: "nowrap",
-      fontFamily: theme("fontFamily.oldStandard"),
+      fontFamily: theme("fontFamily.secondary"),
       "@screen lg": {
         padding: "0 1rem 0.5rem",
       },
@@ -49,17 +49,16 @@ export default plugin(({ addComponents, theme }) => {
       },
     },
     ".heading-head": {
-      fontFamily: theme("fontFamily.oldStandard"),
+      fontFamily: theme("fontFamily.secondary"),
       color: theme("colors.brand-primary"),
-      fontSize: "67px",
-      lineHeight: "70px",
-      "@screen xs": {
-        fontSize: "50px",
-        lineHeight: "56px",
+      fontSize: "50px",
+      lineHeight: "56px",
+      "@screen md": {
+        fontSize: "67px",
+        lineHeight: "70px",
       },
     },
     ".heading-sub": {
-      fontFamily: theme("fontFamily.gotham"),
       color: theme("colors.brand-primary"),
       fontSize: "14px",
       lineHeight: "22px",
@@ -83,7 +82,7 @@ export default plugin(({ addComponents, theme }) => {
     ".link-breadcrumbs": {
       color: theme("colors.brand-primary"),
       fontWeight: theme("fontWeight.bold"),
-      fontFamily: theme("fontFamily.gotham"),
+      fontFamily: theme("fontFamily.primary"),
     },
     ".link-underline": {
       textDecoration: "underline",
@@ -92,12 +91,12 @@ export default plugin(({ addComponents, theme }) => {
       },
     },
     ".link-header": {
-      fontFamily: theme("fontFamily.oldStandard"),
+      fontFamily: theme("fontFamily.secondary"),
       color: theme("colors.brand-primary"),
       fontSize: "42px",
     },
     ".link-footer": {
-      fontFamily: theme("fontFamily.oldStandard"),
+      fontFamily: theme("fontFamily.secondary"),
       color: theme("colors.brand-primary"),
       fontSize: "29px",
     },
@@ -215,6 +214,51 @@ export default plugin(({ addComponents, theme }) => {
     header: {
       borderBottom: "20px solid transparent",
       borderImage: "url('/src/assets/images/navbarBorder.png') 30 round",
+    },
+    ".order": {
+      width: "25px",
+      height: "25px",
+      backgroundImage: "url('src/assets/images/order.png')",
+    },
+    ".bordered-box-b": {
+      position: "relative",
+      background: "white",
+      "@screen sm": {
+        "&::after, & div::after": {
+          content: "''",
+          position: "absolute",
+          backgroundRepeat: "repeat",
+        },
+        "&::after": {
+          pointerEvents: "none",
+          height: "18px",
+          width: "100%",
+          left: "0",
+          bottom: "0",
+          backgroundImage: "url(/src/assets/images/border-h.png)",
+        },
+      },
+    },
+    ".bordered-box-r": {
+      justifyItems: "center",
+      backgroundRepeat: "repeat",
+      "&::after": {
+        pointerEvents: "none",
+        width: "18px",
+        height: "100%",
+        top: "0",
+        right: "0",
+        backgroundImage: "url('/src/assets/images/border-v.png')",
+      },
+    },
+    ".location-button": {
+      borderRadius: "16px",
+      justifyItems: "center",
+      backgroundColor: theme("colors.brand-secondary"),
+    },
+    ".link-info": {
+      fontSize: "28px",
+      fontFamily: theme("fontFamily.secondary"),
     },
   });
 });

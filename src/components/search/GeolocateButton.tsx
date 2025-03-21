@@ -11,10 +11,11 @@ interface GeolocateButtonProps {
   className?: string;
   redirectToSearchPage?: boolean;
   searcherPath?: string;
+  placeholder?: string;
 }
 
 const GeolocateButton = (props: GeolocateButtonProps) => {
-  const { className, redirectToSearchPage, searcherPath } = props;
+  const { className, redirectToSearchPage, searcherPath, placeholder } = props;
 
   const searchActions = useSearchActions();
   const [isFetchingLocation, setIsFetchingLocation] = useState<boolean>(false);
@@ -70,6 +71,7 @@ const GeolocateButton = (props: GeolocateButtonProps) => {
       <button className={className} onClick={handleGeolocationClick}>
         <img src={LocationButton} alt="svg-location" />
         <span className="sr-only">Geolocate.</span>
+        {placeholder && <span className="ml-4">{placeholder}</span>}
       </button>
       {isFetchingLocation && <LoadingSpinner />}
     </>

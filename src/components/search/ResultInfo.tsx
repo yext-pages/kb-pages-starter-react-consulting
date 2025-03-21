@@ -21,14 +21,14 @@ const ResultInfo = () => {
   }, []);
 
   return (
-    <div className="shadow-brand-shadow py-4 px-6">
+    <div className="shadow-brand-shadow shadow-brand-primary py-4 px-6 w-full">
       {filtersOpen && !isDesktop && (
         <div
           className="fixed top-0 left-0 h-screen w-screen opacity-30 bg-black z-10"
           onClick={() => setFiltersOpen(false)}
         ></div>
       )}
-      <div className="flex items-center">
+      <div className="flex items-center text-brand-primary">
         <ResultSummary />
         <FiltersButton
           filtersOpen={filtersOpen}

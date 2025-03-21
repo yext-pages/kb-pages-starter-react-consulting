@@ -1,5 +1,5 @@
 import { isProduction } from "@yext/pages/util";
-import { provideHeadless } from "@yext/search-headless-react";
+import { provideHeadless, SandboxEndpoints } from "@yext/search-headless-react";
 // import { SandboxEndpoints } from "@yext/search-headless-react"; // Add if using a sandbox account
 
 declare global {
@@ -32,10 +32,10 @@ export const getSearchProvider = (
 
   return provideHeadless({
     apiKey,
-    experienceKey: "locator",
+    experienceKey: "kb-testing",
     locale,
-    verticalKey: "locations",
+    verticalKey: "locator",
     experienceVersion,
-    // endpoints: SandboxEndpoints // Add if using a sandbox account
+    endpoints: SandboxEndpoints,
   });
 };

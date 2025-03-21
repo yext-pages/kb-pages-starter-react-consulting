@@ -10,12 +10,11 @@ export default {
     extend: {
       screens: {
         xs: { max: "425px" },
+        sm1: { min: "640px" },
       },
       fontFamily: {
-        primary: "'Arial','Helvetica','sans-serif','system'",
-        secondary: "'Arial','Helvetica','sans-serif','system'",
-        gotham: ["Gotham", "sans-serif"],
-        oldStandard: ["Old Standard", "sans-serif"],
+        primary: ["Gotham", "sans-serif"],
+        secondary: ["Old Standard", "sans-serif"],
         legendSerif: ["Legend Sans Serif", "sans-serif"],
       },
       fontSize: {

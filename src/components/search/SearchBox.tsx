@@ -1,4 +1,4 @@
-import { FilterSearch, SearchBar, executeSearch } from "@yext/search-ui-react";
+import { FilterSearch, executeSearch } from "@yext/search-ui-react";
 import { useSearchActions } from "@yext/search-headless-react";
 import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 import GeolocateButton from "src/components/search/GeolocateButton";
@@ -22,14 +22,17 @@ const SearchBox = (props: SearchBoxProps) => {
   const searchActions = useSearchActions();
 
   return (
-    <div className="shadow-brand-shadow p-6">
-      <h1 className="heading heading-lead mb-4">{title}</h1>
-      <div className="mb-2 text-brand-gray-400">{subTitle}</div>
-      <div className="flex items-center">
-        <div className="relative w-full h-9">
+    <div className="shadow-brand-shadow w-full justify-items-center md:justify-items-stretch shadow-brand-primary p-6">
+      <h1 className="heading heading-head mb-8">{title}</h1>
+      <div className="mb-4 text-brand-primary font-primary">{subTitle}</div>
+      <div className="flex w-full justify-center">
+        <div className="relative w-full sm1:w-[80%] justify-items-center">
           <FilterSearch
             customCssClasses={{
-              filterSearchContainer: "absolute w-full",
+              filterSearchContainer:
+                "relative flex-1 w-full justify-center h-[54px]",
+              inputElement:
+                "border-primary p-4 text-sm h-auto rounded-[16px] text-brand-primary",
             }}
             label=""
             placeholder={placeholderText}
@@ -63,8 +66,12 @@ const SearchBox = (props: SearchBoxProps) => {
             }}
           />
         </div>
-        <GeolocateButton className="ml-4" />
+        <GeolocateButton className="ml-2 hidden sm1:block justify-center items-center location-button w-[58px] h-[58px]" />
       </div>
+      <GeolocateButton
+        className="mt-2 flex sm1:hidden location-button w-full h-[56px] justify-center items-center text-[19px] font-legendSerif text-brand-primary"
+        placeholder="find my location"
+      />
     </div>
   );
 };

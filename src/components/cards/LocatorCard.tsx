@@ -1,5 +1,5 @@
 import type { CardProps } from "@yext/search-ui-react";
-import { HoursStatus } from "@yext/pages-components";
+import { HoursStatus, Link } from "@yext/pages-components";
 import classNames from "classnames";
 import { LocationProfile } from "src/types/entities";
 import { useTemplateData } from "src/common/useTemplateData";
@@ -16,7 +16,7 @@ const LocatorCard = (props: LocatorCardProps & CardProps<LocationProfile>) => {
   const { relativePrefixToRoot } = useTemplateData();
 
   return (
-    <div>
+    <div className="font-primary">
       <div className="flex justify-between">
         <MaybeLink
           className="link-primary hover:underline"
@@ -29,18 +29,52 @@ const LocatorCard = (props: LocatorCardProps & CardProps<LocationProfile>) => {
         <TeaserDistance {...props} className="hidden sm:flex" />
       </div>
       {hours && timezone && (
-        <div className="pb-2 sm:pb-4 h-6">
+        <div className="pb-2 sm:pb-4 h-6 mb-4">
           <HoursStatus
             dayOfWeekTemplate={() => null}
             hours={hours}
             timezone={timezone}
             separatorTemplate={() => <span className="bullet" />}
-            className="h-full"
+            className="h-full text-[18px] font-legendSerif"
           />
         </div>
       )}
-      <div>{address.line1}</div>
-      <TeaserDistance {...props} className="sm:hidden" />
+      <div className="mb-2 flex justify-between">
+        <div className="sm:w-[50%] mt-4">{address.line1}</div>
+        <Link
+          className="link-primary link-info hidden sm:inline"
+          href="#"
+          eventName="getdirections"
+        >
+          visit page
+        </Link>
+      </div>
+      <div>
+        <Link
+          className="link-primary link-underline"
+          href="#"
+          eventName="getdirections"
+        >
+          Get Directions
+        </Link>
+      </div>
+      <div className="mt-4 flex">
+        <Link
+          className="link-primary link-underline"
+          href="#"
+          eventName="getdirections"
+        >
+          (515) 282-6666
+        </Link>
+      </div>
+      <div className="sm:hidden flex justify-between items-center w-full">
+        <TeaserDistance {...props} />
+        <button className="link-info">visit page</button>
+      </div>
+      <button className="sm:hidden w-full button button-secondary font-legendSerif text-[19px] mt-4">
+        <span className="order mr-4"></span>
+        <span className="mt-2">Start your order</span>
+      </button>
     </div>
   );
 };

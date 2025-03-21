@@ -17,7 +17,7 @@ const ResultList = (props: ResultListProps) => {
   const { results } = useLocator();
 
   return (
-    <div className="ResultList">
+    <div className="ResultList w-full">
       {results?.map((result) => (
         <ResultListItem
           key={result.id || result.index}
@@ -61,6 +61,8 @@ function ResultListItem(props: ResultListItemProps) {
       ref={listItemRef}
       className={classNames(
         "ResultList-item",
+        "font-legendSerif",
+        "text-brand-primary",
         { "is-selected": selectedId === result.id },
         { "is-hovered": hoveredId === result.id || focusedId === result.id }
       )}

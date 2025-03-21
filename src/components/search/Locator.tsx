@@ -90,14 +90,18 @@ const Locator = (props: LocatorProps) => {
         {(!initialParamsLoaded ||
           isLoading ||
           (allResultsOnLoad && !allLocationsLoaded)) && <LoadingSpinner />}
-        <div className="Locator-content">
-          <SearchBox
-            title={title}
-            subTitle={subTitle}
-            placeholderText={placeholderText}
-          />
-          <ResultInfo />
-          <ResultList CardComponent={LocatorCard} />
+        <div className="Locator-content font-primary relative">
+          <div className="bordered-box-b">
+            <div className="bordered-box-r">
+              <SearchBox
+                title={title}
+                subTitle={subTitle}
+                placeholderText={placeholderText}
+              />
+              <ResultInfo />
+              <ResultList CardComponent={LocatorCard} />
+            </div>
+          </div>
         </div>
         {isDesktopBreakpoint && (
           <div className="Locator-map">
